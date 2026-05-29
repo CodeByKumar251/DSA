@@ -2,9 +2,9 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 
-public class l001_findSet {
+public class l001FindSet {
     
-    //1
+    //1 creation of Tree
     public static class TreeNode {
         int val=0;
         TreeNode left=null;
@@ -15,22 +15,22 @@ public class l001_findSet {
         }
     } 
 
-    //2
+    //2 size of a tree
     public static int size(TreeNode root){
         return root==null?0:size(root.left)+size(root.right)+1;
     }
 
-    //3
+    //3 height of tree
     public static int height(TreeNode root){
         return root==null?-1:Math.max(height(root.left),height(root.right))+1;
     }
 
-    //4
+    //4 maximum value of tree
     public static int maximum(TreeNode root){
         return root==null? -(int) 1e9 : Math.max(root.val, Math.max(maximum(root.left),maximum(root.right)));
     }
 
-    //5
+    //5 minimum value of tree
     public static int minimum(TreeNode root){
         return root==null? (int) 1e9 : Math.max(root.val, Math.min(minimum(root.left),minimum(root.right)));
     }
@@ -146,7 +146,7 @@ public class l001_findSet {
         return;
     }
 
-    //countAllSingleChildParent
+    //10)countAllSingleChildParent
     public static int countAllSingleChildParent(TreeNode root){
         //base case
         if(root==null || (root.left==null && root.right==null)){
@@ -154,9 +154,9 @@ public class l001_findSet {
         }
 
         int leftSingleChild=countAllSingleChildParent(root.left);
-        int rightSIngleChild=countAllSingleChildParent(root.right);
+        int rightSingleChild=countAllSingleChildParent(root.right);
 
-        int singleChild=leftSingleChild+rightSIngleChild;
+        int singleChild=leftSingleChild+rightSingleChild;
         if(root.left==null || root.right==null){
             singleChild+=1;
         }
@@ -252,7 +252,7 @@ public class l001_findSet {
      }
 
      public void burningTreeNode(TreeNode root, TreeNode block, int time,ArrayList<ArrayList<Integer>> ans){
-        if(root==null) return;
+        if(root==null || root==block) return;
 
         if(ans.size()==time) {
             ans.add(new ArrayList<>());
@@ -395,6 +395,7 @@ public class l001_findSet {
 
     }
 
+    
     
 
 }

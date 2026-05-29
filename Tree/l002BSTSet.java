@@ -1,7 +1,8 @@
   import java.util.ArrayList;
   import java.util.List;
-public class l002BST {
+public class l002BSTSet {
 
+    //create tree node
     public static class TreeNode {
         int val=0;
         TreeNode left=null;
@@ -12,12 +13,12 @@ public class l002BST {
         }
     } 
 
-    //2
+    //2 size of tree 
     public static int size(TreeNode root){
         return root==null?0:size(root.left)+size(root.right)+1;
     }
 
-    //3
+    //3 height of tree 
     public static int height(TreeNode root){
         return root==null?-1:Math.max(height(root.left),height(root.right))+1;
     }
@@ -25,19 +26,23 @@ public class l002BST {
     //4 find maximum
     public static int maximum(TreeNode root){
         TreeNode curr=root;
+        TreeNode ans=root;
         while(curr!=null){
             curr=curr.right;
+            ans=curr;
         }
-        return curr.val;
+        return ans.val;
     }
 
     //5 find minimum
     public static int minimum(TreeNode root){
         TreeNode curr=root;
+        TreeNode ans=root;
         while(curr!=null){
             curr=curr.left;
+            ans=curr;
         }
-        return curr.val;
+        return ans.val;
     }
 
     //6 find element in tree(find an element in tree)
